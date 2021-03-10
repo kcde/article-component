@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+:root {
+    --dark-gray-blue: hsl(217, 19%, 35%);
+    --desat-dark-blue: hsl(214, 17%, 51%);
+    --gray-blue: hsl(212, 23%, 69%);
+    --light-gray-blue: hsl(210, 46%, 95%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* HELPERS */
+.flex {
+    display: flex;
+}
+
+.fd-col {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.verical-bottom {
+    vertical-align: bottom;
+}
+
+.font-lg {
+    font-weight: 700;
+}
+
+.font-gray-blue {
+    color: var(--gray-blue);
+}
+
+/* --------------- */
+
+body {
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--light-gray-blue);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+img {
+    width: 100%;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 730px;
+}
+.article {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.article-banner {
+    height: 210px;
+    background-image: url('../images/drawers.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -12px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.article-content {
+    margin-bottom: 18px;
+}
+
+.article-content h1 {
+    font-size: 16px;
+
+    color: var(--dark-gray-blue);
+    margin-bottom: 16px;
+    margin-top: 40px;
+}
+
+.article-content p {
+    color: var(--desat-dark-blue);
+}
+
+.article-content,
+.article-footer {
+    padding: 0 32px 0 32px;
+}
+.article-footer {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+/* .article-footer::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: red;
+} */
+
+.article-writer img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 16px;
+}
+.name {
+    color: var(--dark-gray-blue);
+}
+.date {
+    color: var(--desat-dark-blue);
+}
+
+.share-btn {
+    width: 32px;
+    height: 32px;
+    background-color: var(--light-gray-blue);
+    display: grid;
+    place-items: center;
+    border-radius: 100%;
+}
+
+.share {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 14px 32px 14px 32px;
+    background-color: var(--dark-gray-blue);
+}
+.share p {
+    color: var(--gray-blue);
+    letter-spacing: 6px;
+    margin-right: 16px;
+}
+.social-icons > * {
+    vertical-align: bottom;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.share .share-btn {
+    background-color: var(--desat-dark-blue);
+}
+
+.social-icons > * + * {
+    margin-left: 16px;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* [data-state='share-clicked'] .article-writer {
+    opacity: 0;
+} */
+
+[data-state='share-clicked'] .share {
+    display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+    .article {
+        display: flex;
+        overflow: unset;
+    }
+    .article-banner {
+        width: 35%;
+        height: inherit;
+        background-position-y: 0;
+    }
+
+    .main {
+        width: 65%;
+    }
+
+    .share::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid var(--dark-gray-blue);
+    }
+
+    .share {
+        z-index: 6;
+        top: -55px;
+        right: -50%;
+        left: unset;
+        bottom: unset;
+        transform: translateX(-70%);
+        border-radius: 10px;
+        box-shadow: 0 3px 9px 1px var(--gray-blue);
+    }
+
+    [data-state='share-clicked'] .share-btn {
+        background-color: var(--desat-dark-blue);
+    }
+
+    .share .share-btn {
+        display: none;
+    }
+
+    [data-state='share-clicked'] .share-btn svg path {
+        fill: #ecf2f8;
+    }
+}
